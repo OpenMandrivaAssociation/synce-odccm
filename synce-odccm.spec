@@ -17,7 +17,7 @@ Source:		%{shortname}-%{version}.tar.bz2
 URL:		http://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/%name-root
 BuildRequires:	libsynce-devel = %{version}
-BuildRequires:	hal-devel gob2 glib2-devel
+BuildRequires:	hal-devel gob2 glib2-devel libgnet2-devel
 Obsoletes:	%libname
 Obsoletes:	%libname-devel
 Conflicts:	synce-kde < 0.9.1-2
