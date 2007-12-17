@@ -15,7 +15,6 @@ License:	MIT
 Group:		System/Libraries
 Source:		%{shortname}-%{version}.tar.bz2
 URL:		http://synce.sourceforge.net/
-Buildroot:	%{_tmppath}/%name-root
 BuildRequires:	libsynce-devel = %{version}
 BuildRequires:	hal-devel gob2 glib2-devel libgnet2-devel
 BuildRequires:	libdbus-glib-devel
