@@ -14,6 +14,7 @@ Release:	%{release}
 License:	MIT
 Group:		System/Libraries
 Source:		%{shortname}-%{version}.tar.bz2
+#(eandry) Add a valid dbus configuration
 Patch0:		synce-odccm-0.10.0-dbus-conf.patch
 URL:		http://synce.sourceforge.net/
 BuildRequires:	libsynce-devel = %{version}
