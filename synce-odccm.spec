@@ -1,6 +1,6 @@
 %define name	synce-odccm
 %define shortname odccm
-%define release  %mkrel 1
+%define release  %mkrel 2
 %define version  0.10.0
 
 %define major 0
@@ -14,6 +14,7 @@ Release:	%{release}
 License:	MIT
 Group:		System/Libraries
 Source:		%{shortname}-%{version}.tar.bz2
+Patch0:		synce-odccm-0.10.0-dbus-conf.patch
 URL:		http://synce.sourceforge.net/
 BuildRequires:	libsynce-devel = %{version}
 BuildRequires:	hal-devel gob2 glib2-devel libgnet2-devel
@@ -27,6 +28,7 @@ Conflicts:	synce-kde < 0.9.1-2
 
 %prep
 %setup -q -n %{shortname}-%{version}
+%patch0
 
 %build
 %configure2_5x --with-libsynce=%{_prefix}
