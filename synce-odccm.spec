@@ -1,6 +1,6 @@
 %define name	synce-odccm
 %define shortname odccm
-%define release  %mkrel 5
+%define release  %mkrel 6
 %define version  0.10.0
 
 %define major 0
