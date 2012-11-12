@@ -1,0 +1,59 @@
+Index: odccm/src/Makefile.am
+===================================================================
+--- src/Makefile.am	(révision 3110)
++++ src/Makefile.am	(révision 3111)
+@@ -27,9 +27,13 @@
+ 
+ EXTRA_DIST = odccm-device-manager-signals-marshal.list \
+ 		odccm-device-manager.xml \
+-		odccm-device-signals-marshal.list
+-		odccm-device.xml
++		odccm-device-signals-marshal.list \
++		odccm-device.xml \
++		odccm.conf
+ 
++dbusservicedir = "`pkg-config --variable=sysconfdir dbus-1`/dbus-1/system.d"
++dbusservice_DATA = odccm.conf
++
+ %-glue.h: %.xml
+ 	dbus-binding-tool --mode=glib-server --output=$@ --prefix=$(subst -,_,$*) $<
+ 
+Index: odccm/src/odccm.conf
+===================================================================
+--- src/odccm.conf	(révision 0)
++++ src/odccm.conf	(révision 3111)
+@@ -0,0 +1,26 @@
++<!DOCTYPE busconfig PUBLIC
++ "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
++ "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
++<busconfig>
++
++  <!-- This configuration file specifies the required security policies
++       for odccm to work. -->
++
++  <!-- Only root can own the odccm service -->
++  <policy user="root">
++    <allow own="org.synce.odccm"/>
++  </policy>
++
++  <!-- Allow anyone to invoke methods on the Manager and Device interfaces -->
++  <policy context="default">
++    <allow send_interface="org.synce.odccm.DeviceManager"/>
++    <allow send_interface="org.synce.odccm.Device"/>
++
++    <allow receive_interface="org.synce.odccm.DeviceManager"
++           receive_sender="org.synce.odccm"/>
++    <allow receive_interface="org.synce.odccm.Device"
++           receive_sender="org.synce.odccm"/>
++  </policy>
++
++</busconfig>
++
+Index: odccm/Makefile.am
+===================================================================
+--- Makefile.am	(révision 3110)
++++ Makefile.am	(révision 3111)
+@@ -1,3 +1 @@
+ SUBDIRS = src tests man
+-
+-EXTRA_DIST = data/dbus/odccm.conf
