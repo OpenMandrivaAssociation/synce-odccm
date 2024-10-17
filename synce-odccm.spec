@@ -16,7 +16,7 @@ Group:		System/Libraries
 Source:		%{shortname}-%{version}.tar.bz2
 #(eandry) Add a valid dbus configuration
 Patch0:		synce-odccm-0.10.0-dbus-conf.patch
-URL:		http://synce.sourceforge.net/
+URL:		https://synce.sourceforge.net/
 Buildroot:	%{_tmppath}/%name-root
 BuildRequires:	libsynce-devel = %{version}
 BuildRequires:	hal-devel gob2 glib2-devel libgnet2-devel
